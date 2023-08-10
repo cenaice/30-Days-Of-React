@@ -1,5 +1,12 @@
 console.log("External Script Output")
 
+// Ternary Operators (common in React)
+// short way to write if else statements
+let isRaining = true
+isRaining
+    ? console.log("Get a rain coat")
+    : console.log("No need for a coat")
+
 
 // Basic Data Types
 // Array
@@ -76,4 +83,16 @@ const webTechs = [
   webTechs.sort()
   console.log(webTechs) // ["CSS", "HTML", "JavaScript", "MongoDB", "Node", "React", "Redux"]
 
-  
+
+let personAccount = {
+    firstName: "",
+    lastName: "",
+    income: 0,
+    expenses: 0,
+    totalIncome: 0,
+    totalExpense: 0,
+    accountInfo: "",
+    addIncome: function(){},
+    addExpense: function(){},
+    accountBalance: function(){},
+}
