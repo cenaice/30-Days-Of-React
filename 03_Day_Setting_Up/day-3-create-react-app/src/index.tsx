@@ -26,49 +26,16 @@ const welcome = "Welcome to 30 Days of React";
 const date = "Aug 13, 2023";
 const dynamic_data = "Example of Dynamic Data.";
 
-// Day 5: Passing properties into the component using props
-// Day 5: Using a number props to a component and Array Props type
-
-const Skills = (props) => {
-  // modifying the skills array
-  const skillList = props.skills.map((skill) => <li>{skill}</li>);
-  return <ul>{skillList}</ul>;
-};
-
-const showDate = (time) => {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const month = months[time.getMonth()].slice(0, 3);
-  const year = time.getFullYear();
-  const date = time.getDate();
-  return ` ${month} ${date}, ${year}`;
-};
-
-const Header = (props) => (
+const Header = () => (
   <header style={headerStyles}>
     <div className="header-wrapper">
-      <Typography variant="h2">{props.data.welcome}</Typography>
+      <Typography variant="h2">{welcome}</Typography>
       <Typography variant="body1">Getting Started React</Typography>
       <Typography variant="body2">
         Example of Static Data, {dynamic_data}
       </Typography>
-      <Typography variant="caption">
-        {props.data.firstName} {props.data.lastName}
-      </Typography>
-      <Typography variant="caption">{showDate(props.data.date)}</Typography>
+      <Typography variant="caption">Asabeneh Yetayeh</Typography>
+      <Typography variant="caption">{date}</Typography>
     </div>
   </header>
 );
@@ -101,7 +68,7 @@ const techs = [
   "CSS",
   "JavaScript",
 ];
-const techsFormatted = techs.map((tech) => (
+const techsFormatted: string = techs.map((tech) => (
   <Chip label={tech} color="primiary" />
 ));
 
@@ -216,46 +183,22 @@ const HexaColorGenerator = () => {
   return "#" + color;
 };
 
-// Day 5: Added props to the button
-const ButtonComponent = (props) => (
-  <button onClick={props.onClick} style={buttonStyles}>
-    {props.text}
-  </button>
-);
+const ButtonComponent = () => <button style={buttonStyles}>Day4Example</button>;
 
 // JSX element, app
 // Day 4: We switched our JSX elements to functional React components by switching {header},{userCard} to <Header/><UserCard/>
 // We also use arrow functions for all our React components/ sections
 
-// Day 5: Passing in Object Props as data to our Header
-// Props Destructuring
-const App = () => {
-  const handleTime = () => {
-    alert(showDate(new Date()))
-  }
-
-  const greetPeople = () => {
-    alert("Welcome to 30 Days of React Challenge, 2023");
-  };
-  const data = {
-    welcome: "Welcome to 30 Days Of React",
-    firstName: "Victer",
-    lastName: "Phiathep ",
-    date: new Date(), // date needs to be formatted to a human readable format
-  };
-
-  return (
-    <div className="app">
-      <Header data={data} />
-      <UserCard />
-      <Main />
-      <HexaColorGenerator />
-      <ButtonComponent text="Greet People" onClick={greetPeople} />
-      <ButtonComponent text="Show Time" onClick={handleTime} />
-    </div>
-  );
-};
+const app: React.JSX.Element = (
+  <div className="app">
+    <Header />
+    <UserCard />
+    <Main />
+    <HexaColorGenerator />
+    <ButtonComponent />
+  </div>
+);
 
 const rootElement = document.getElementById("root");
 // we render the JSX element using the ReactDOM package
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(app, rootElement);
